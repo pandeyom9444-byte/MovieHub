@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080808">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        @keyframes result-enter {
+            from { opacity: 0; transform: translateY(18px) scale(.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .result-card {
+            animation: result-enter 420ms cubic-bezier(.2, .75, .25, 1) both;
+            animation-delay: calc(var(--card-index, 0) * 55ms);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .result-card { animation: none; }
+        }
+    </style>
+    <title>MovieHub | Search results</title>
+</head>
+<body class="min-h-screen bg-[#080808] text-white antialiased">
+    <header class="border-b border-white/10 bg-[#080808]">
+        <nav class="mx-auto flex h-[60px] max-w-7xl items-center justify-between px-5 sm:px-8" aria-label="Main navigation">
+            <a href="index.html" class="text-lg font-bold tracking-tight">Movie<span class="text-red-500">Hub</span></a>
+            <a href="index.html" class="inline-flex items-center gap-2 rounded-lg border border-white/15 px-4 py-2 text-sm font-medium text-gray-200 transition hover:border-red-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-red-500">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="m15 18-6-6 6-6M9 12h12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Back to home
+            </a>
+        </nav>
+    </header>
+
+    <main class="mx-auto max-w-7xl px-5 py-8 sm:px-8">
+        <section class="mb-8">
+            <p class="text-sm font-semibold uppercase tracking-[.2em] text-red-500">Movie search</p>
+            <h1 class="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">Find your next favorite</h1>
+            <form id="movieForm" class="mt-6 flex max-w-2xl flex-col gap-3 sm:flex-row" role="search">
+                <label class="sr-only" for="movieInput">Search for a movie</label>
+                <input id="movieInput" type="search" placeholder="Search for a movie..." autocomplete="off"
+                    class="min-w-0 flex-1 rounded-lg border border-white/15 bg-[#151515] px-4 py-3 text-white placeholder:text-gray-500 focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-500/30">
+                <button type="submit" class="rounded-lg bg-red-600 px-7 py-3 font-semibold text-white transition hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-2 focus:ring-offset-[#080808]">
+                    Search Movies
+                </button>
+            </form>
+        </section>
+
+        <p id="searchStatus" class="mb-5 min-h-6 text-sm text-gray-400" role="status" aria-live="polite"></p>
+        <section aria-label="Movie search results">
+            <div id="movieHub" class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"></div>
+        </section>
+    </main>
+    <script src="search-results.js"></script>
+</body>
+</html>

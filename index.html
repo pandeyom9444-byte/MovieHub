@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080808">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>MovieHub | Discover your next favorite movie</title>
+</head>
+<body class="min-h-screen bg-[#080808] text-white antialiased">
+    <header class="relative z-20 border-b border-white/10 bg-[#080808]">
+        <nav class="mx-auto flex h-[60px] max-w-7xl items-center justify-between px-5 sm:px-8" aria-label="Main navigation">
+            <a href="index.html" class="flex items-center gap-2 text-lg font-bold tracking-tight">
+                <svg class="h-6 w-6 text-red-500" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <rect x="3" y="6" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2.5"/>
+                    <path d="M3 10h18M7 6l2 4m4-4 2 4m-4 10 2-4m4 4 2-4" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <span>Movie<span class="text-red-500">Hub</span></span>
+            </a>
+            <button id="menuButton" type="button" class="rounded p-2 text-gray-300 transition hover:text-white focus:outline-none focus:ring-2 focus:ring-red-500" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mainMenu">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+            <div id="mainMenu" class="absolute right-5 top-[52px] hidden min-w-40 rounded-lg border border-white/10 bg-[#151515] p-2 shadow-xl sm:right-8">
+                <a href="#home" class="block rounded px-3 py-2 text-sm text-gray-300 hover:bg-white/5 hover:text-white">Home</a>
+                <a href="#movieForm" class="block rounded px-3 py-2 text-sm text-gray-300 hover:bg-white/5 hover:text-white">Search movies</a>
+            </div>
+        </nav>
+    </header>
+
+    <main id="home" class="relative isolate min-h-[calc(100svh-60px)] overflow-hidden">
+        <div class="pointer-events-none absolute inset-x-0 bottom-0 z-0 flex justify-center" aria-hidden="true">
+            <div class="relative h-[330px] w-[min(88vw,540px)] overflow-hidden rounded-t-[48%] bg-gradient-to-br from-orange-300 via-orange-600 to-red-800 sm:h-[410px]">
+                <img src="https://img.omdbapi.com/?i=tt15239678&amp;apikey=4bec4c3c" alt="" class="absolute inset-0 h-full w-full object-cover object-top opacity-90">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+            </div>
+        </div>
+
+        <section class="relative z-10 mx-auto flex max-w-4xl flex-col items-center px-5 pb-[360px] pt-[clamp(170px,38vh,255px)] text-center sm:px-8 sm:pb-[430px]">
+            <h1 class="max-w-3xl text-[30px] font-extrabold leading-[1.15] tracking-tight sm:text-5xl">
+                Discover Your Next <span class="text-red-500">Favorite Movie</span>
+            </h1>
+            <p class="mt-6 max-w-2xl text-base leading-relaxed text-gray-400 sm:text-lg">
+                Search for trending cinema, look up ratings and reviews, and find what to watch tonight with MovieHub.
+            </p>
+
+            <form id="movieForm" class="mt-9 flex w-full max-w-xl flex-col gap-3 sm:flex-row" role="search">
+                <label class="sr-only" for="movieInput">Search for a movie</label>
+                <input id="movieInput" type="search" placeholder="Search for a movie..." autocomplete="off"
+                    class="min-w-0 flex-1 rounded-lg border border-white/15 bg-[#151515]/95 px-4 py-3 text-white placeholder:text-gray-500 focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-500/30">
+                <button type="submit" class="rounded-lg bg-red-600 px-7 py-3 font-semibold text-white transition hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-2 focus:ring-offset-[#080808]">
+                    Search Movies
+                </button>
+            </form>
+        </section>
+    </main>
+    <script src="index.js"></script>
+</body>
+</html>

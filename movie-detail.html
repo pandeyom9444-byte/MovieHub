@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080808">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>MovieHub | Movie detail</title>
+    <style>
+        @keyframes detail-enter {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .detail-enter {
+            animation: detail-enter 500ms cubic-bezier(.2, .75, .25, 1) both;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .detail-enter { animation: none; }
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-[#080808] text-white antialiased">
+    <header class="relative z-20 border-b border-white/10 bg-[#080808]/90">
+        <nav class="mx-auto flex h-[60px] max-w-7xl items-center justify-between px-5 sm:px-8" aria-label="Main navigation">
+            <a href="index.html" class="text-lg font-extrabold tracking-[.18em] text-red-500">MOVIE HUB</a>
+            <a id="backToSearch" href="index.html" class="inline-flex items-center gap-2 rounded-lg border border-white/15 px-4 py-2 text-sm font-medium text-gray-200 transition hover:border-red-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-red-500">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="m15 18-6-6 6-6M9 12h12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Back to search
+            </a>
+        </nav>
+    </header>
+    <main class="relative isolate min-h-[calc(100svh-60px)] overflow-hidden">
+        <div id="movie-backdrop" class="pointer-events-none absolute inset-0 z-[-1] overflow-hidden" aria-hidden="true"></div>
+        <div id="movie-detail" class="mx-auto flex min-h-[calc(100svh-60px)] max-w-7xl items-center px-5 py-10 sm:px-8" aria-live="polite">
+            <p class="text-gray-400">Loading movie details...</p>
+        </div>
+    </main>
+    <script src="movie-detail.js"></script>
+</body>
+
+</html>
